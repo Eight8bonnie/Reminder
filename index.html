@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reminder for u</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9d9ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+
+  h1 {
+    color: #e000fd;
+    font-size: 50px;
+  }
+  h2 {
+    color: #9500a9;
+  }
+
+  button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #fec3ff;
+    color: rgb(255, 0, 204);
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #ffa9f2;
+  }
+
+  #answers {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00c40d;
+  }
+</style>
+</head>
+<body>
+<h1>Reminder for u to drink water</h1>
+<h2>Drink water now!!!</h2>
+
+<button id="yesButton">Okay, i will</button>
+<button id="haveDrinkButton">But I just drank some water</button>
+<button id="noButton">I don't want to</button>
+
+<p id="answers"></p>
+
+<script>
+  const yesButton = document.getElementById("yesButton");
+  const haveDrinkButton = document.getElementById("haveDrinkButton");
+  const noButton = document.getElementById("noButton");
+  const answers = document.getElementById("answers");
+
+  yesButton.addEventListener("click", function () {
+    answers.textContent = "Yeyyyy😊";
+  });
+
+  haveDrinkButton.addEventListener("click", function () {
+    answers.textContent = "Nice😊";
+  });
+
+  noButton.addEventListener("dblclick", function () {
+    answers.textContent = "Aww, why not?😔";
+  });
+</script>
+
+</body>
+</html>
