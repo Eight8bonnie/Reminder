@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,1000;1,1000&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reminder for u</title>
   <style>
+
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
 
 @media (max-width: 500px) {
   h1 {
@@ -18,7 +29,7 @@
 }
 
   body {
-    font-family: Arial, sans-serif;
+    font-family: Nunito, sans-serif;
     background-color: #f9d9ff;
     display: flex;
     flex-direction: column;
@@ -29,12 +40,24 @@
     text-align: center;
   }
 
+  #yesButton, #haveDrinkButton, #noButton {
+  font-family: inherit; 
+}
+
   h1 {
-    color: #e000fd;
+    color: #9500a9;
     font-size: 50px;
+    font-family: Nunito, sans-serif;
   }
   h2 {
     color: #9500a9;
+    font-size: 20px;
+    font-family: Nunito, sans-serif;
+  }
+  h3 {
+    color: #9300ad;
+    font-size: 30px;
+    font-family: Nunito, sans-serif;
   }
 
   button {
@@ -42,43 +65,99 @@
     padding: 10px 15px;
     border: none;
     border-radius: 15px;
-    background-color: #fec3ff;
-    color: rgb(255, 0, 204);
+    background-color: #ffe7ff;
+    color: rgb(156, 0, 133);
     font-size: 16px;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: #ffa9f2;
+    background-color: #ff64e8;
   }
 
   #answers {
     margin-top: 15px;
     font-size: 18px;
     font-weight: bold;
-    color: #00c40d;
+    color: #00ab14;
   }
+
+h1, h2, h3, button {
+  animation: appear 1s ease-in;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+  position: fixed;
+  bottom: -50px;
+  font-size: 24px;
+  animation: floating 6s linear infinite;
+}
+  
+@keyframes floating {
+  0% { bottom: -50px; opacity: 0; }
+  20% { opacity: 1; }
+  100% { bottom: 110%; opacity: 0; }
+}
+
+body {
+  background: linear-gradient(270deg, #fcbefc, #fc8bf4, #ffd1ff);
+  background-size: 600% 600%;
+  animation: gradation 8s ease infinite;
+}
+
+@keyframes gradation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.heart {
+  position: fixed;
+  bottom: -50px;
+  font-size: 32px;
+  opacity: 0.8;
+  animation: floating 5s linear infinite;
+  z-index: 0;
+}
+
 </style>
+
+
+
 </head>
 <body>
-<h1>Reminder for u to drink water</h1>
-<h2>Drink water now!!!</h2>
+<h1>Hi Victory, this is a reminder only for you</h1>
+<h2>hehe</h2>
+<h3>Drink water now!!!</h3>
+
+
+
 
 <button id="yesButton">Okay, i will</button>
-<button id="haveDrinkButton">But I just drank some water</button>
+<button id="haveDrinkButton">But i've drink already</button>
 <button id="noButton">I don't want to</button>
+
+
 
 <p id="answers"></p>
 
 <script>
+
+
   const yesButton = document.getElementById("yesButton");
   const haveDrinkButton = document.getElementById("haveDrinkButton");
   const noButton = document.getElementById("noButton");
   const answers = document.getElementById("answers");
 
   yesButton.addEventListener("click", function () {
-    answers.textContent = "Yeyyyy😊";
-  });
+  answers.textContent = "Yeyyyy😊";
+  confetti();
+});
 
   haveDrinkButton.addEventListener("click", function () {
     answers.textContent = "Nice😊";
@@ -86,8 +165,29 @@
 
   noButton.addEventListener("click", function () {
     answers.textContent = "Aww, why not?😔";
+  
   });
 </script>
+
+<div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+<div class="heart" style="left: 25%; animation-delay: 1s;">❤️</div>
+<div class="heart" style="left: 45%; animation-delay: 2s;">❤️</div>
+<div class="heart" style="left: 60%; animation-delay: 1s;">❤️</div>
+<div class="heart" style="left: 75%; animation-delay: 2s;">❤️</div>
+<div class="heart" style="left: 90%; animation-delay: 0s;">❤️</div>
+<div class="heart" style="left: 15%; animation-delay: 1.5s;">❤️</div>
+<div class="heart" style="left: 35%; animation-delay: 0.5s;">❤️</div>
+<div class="heart" style="left: 55%; animation-delay: 1.5s;">❤️</div>
+<div class="heart" style="left: 80%; animation-delay: 3s;">❤️</div>
+<div class="heart" style="left: 5%; animation-delay: 3.5s;">❤️</div>
+<div class="heart" style="left: 40%; animation-delay: 2.5s;">❤️</div>
+<div class="heart" style="left: 70%; animation-delay: 0.5s;">❤️</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+
 
 </body>
 </html>
