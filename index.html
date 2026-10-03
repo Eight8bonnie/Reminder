@@ -4,12 +4,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,1000;1,1000&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta name="color-scheme" content="light">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reminder for u</title>
-  <source src="yey.mp3" type="audio/mpeg">
-  <style>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reminder for u</title>
+<source src="yey.mp3" type="audio/mpeg">
+<div id="mascot">🐱</div>
+
+
+
+
+<style>
   
 button {
   transition: transform 0.2s ease;
@@ -52,7 +57,7 @@ body {
 
   h1 {
     color: #9500a9;
-    font-size: 45px;
+    font-size: 36px;
     font-family: Nunito, sans-serif;
   }
   h2 {
@@ -131,6 +136,10 @@ body {
   z-index: 0;
 }
 
+#noButton {
+  position: fixed;
+}
+
 </style>
 
 
@@ -154,6 +163,8 @@ body {
 
 <script>
   
+
+
   const yesButton = document.getElementById("yesButton");  
   const haveDrinkButton = document.getElementById("haveDrinkButton");
   const noButton = document.getElementById("noButton");
@@ -179,6 +190,23 @@ body {
     answers.textContent = "Aww, why not?🥹🥹🥹 ";
   
   });
+
+  
+function escaping(event) {
+  event.preventDefault();
+
+  const maxX = window.innerWidth - noButton.offsetWidth;
+  const maxY = window.innerHeight - noButton.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noButton.style.left = x + "px";
+  noButton.style.top = y + "px";
+}
+
+noButton.addEventListener("mouseenter", escaping);
+noButton.addEventListener("touchstart", escaping);
 </script>
 
 <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
