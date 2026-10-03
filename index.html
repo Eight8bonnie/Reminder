@@ -8,8 +8,9 @@
   <meta name="color-scheme" content="light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reminder for u</title>
+  <source src="yey.mp3" type="audio/mpeg">
   <style>
-
+  
 button {
   transition: transform 0.2s ease;
 }
@@ -20,12 +21,17 @@ button:hover {
 
 @media (max-width: 500px) {
   h1 {
-    font-size: 28px;
+    font-size: 22px;
+    line-height: 1.4;
   }
 
   button {
     font-size: 14px;
   }
+}
+
+body {
+  user-select: none;
 }
 
   body {
@@ -46,7 +52,7 @@ button:hover {
 
   h1 {
     color: #9500a9;
-    font-size: 50px;
+    font-size: 45px;
     font-family: Nunito, sans-serif;
   }
   h2 {
@@ -131,40 +137,46 @@ body {
 
 </head>
 <body>
-<h1>Hi Victory, this is a reminder only for you</h1>
+
+<h1>Hi Py, this is a reminder only for you</h1>
 <h2>hehe</h2>
 <h3>Drink water now!!!</h3>
 
 
 
+<audio id="yey" src="yey.mp3" type="audio/mpeg"></audio>
 
-<button id="yesButton">Okay, i will</button>
-<button id="haveDrinkButton">But i've drink already</button>
+<button id="yesButton">Okay, i will</button> 
+<button id="haveDrinkButton">I already drank water!!</button>
 <button id="noButton">I don't want to</button>
-
-
 
 <p id="answers"></p>
 
 <script>
-
-
-  const yesButton = document.getElementById("yesButton");
+  
+  const yesButton = document.getElementById("yesButton");  
   const haveDrinkButton = document.getElementById("haveDrinkButton");
   const noButton = document.getElementById("noButton");
   const answers = document.getElementById("answers");
 
+
   yesButton.addEventListener("click", function () {
-  answers.textContent = "Yeyyyy😊";
-  confetti();
+  answers.textContent = "Yeyyyy, mahal na mahal kita Py🥰🥰🥰";
+  document.getElementById("yey").play();
+  confetti({
+    origin: { x: 0.5, y: 1.0 },
+    particleCount: 500,
+    spread: 160
+  });
+
 });
 
   haveDrinkButton.addEventListener("click", function () {
-    answers.textContent = "Nice😊";
+    answers.textContent = "Owww, okay then🥺🥺🥺";
   });
 
   noButton.addEventListener("click", function () {
-    answers.textContent = "Aww, why not?😔";
+    answers.textContent = "Aww, why not?🥹🥹🥹 ";
   
   });
 </script>
@@ -186,8 +198,6 @@ body {
 
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
-
 
 </body>
 </html>
