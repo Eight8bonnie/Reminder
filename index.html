@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reminder for u</title>
 <source src="yey.mp3" type="audio/mpeg">
-<div id="mascot">🐱</div>
+<img id="mascot" src="axolotlLove.png" alt="axolotl mascot">
+
 
 
 
@@ -86,14 +87,7 @@ body {
     background-color: #ff64e8;
   }
 
-  #answers {
-    margin-top: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #00ab14;
-  }
-
-h1, h2, h3, button {
+h1, h2, h3, button, mascot, #answers {
   animation: appear 1s ease-in;
 }
 
@@ -137,7 +131,26 @@ body {
 }
 
 #noButton {
-  position: fixed;
+}
+
+#mascot {
+  width: 90px;
+  height: auto;
+  animation: moving 2s ease-in-out infinite;
+}
+
+#answers {
+  z-index: 999;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #00ab14;
+  }
+
+
+@keyframes moving {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
 }
 
 </style>
@@ -150,6 +163,12 @@ body {
 <h1>Hi Py, this is a reminder only for you</h1>
 <h2>hehe</h2>
 <h3>Drink water now!!!</h3>
+<p style="font-size: 1px; opacity: 0.5; text-align: center; position: fixed; bottom: 0; width: 100%;">
+  <a href="https://www.flaticon.com/free-stickers/axolotl" title="axolotl stickers">Axolotl stickers created by Surfsup.Vector - Flaticon</a>
+</p>
+
+
+
 
 
 
@@ -164,36 +183,98 @@ body {
 <script>
   
 
-
   const yesButton = document.getElementById("yesButton");  
   const haveDrinkButton = document.getElementById("haveDrinkButton");
-  const noButton = document.getElementById("noButton");
+  const noButton = document.getElementById("noButton"); let percobaan = 0;
   const answers = document.getElementById("answers");
+  const mascot = document.getElementById("mascot");
 
 
   yesButton.addEventListener("click", function () {
-  answers.textContent = "Yeyyyy, mahal na mahal kita Py🥰🥰🥰";
-  document.getElementById("yey").play();
-  confetti({
-    origin: { x: 0.5, y: 1.0 },
-    particleCount: 500,
-    spread: 160
-  });
+    answers.textContent = "Yeyyyy, mahal na mahal kita Py🥰🥰🥰";
+    document.getElementById("yey").play();
+    confetti({
+      origin: { x: 0.5, y: 1.0 },
+      particleCount: 500,
+      spread: 160
+    });
+    mascot.src = "AxolotlLoving.png";
+    setTimeout(function () {
+      mascot.src = "axolotlLove.png";
+    }, 5000);
 
 });
 
-  haveDrinkButton.addEventListener("click", function () {
-    answers.textContent = "Owww, okay then🥺🥺🥺";
+  haveDrinkButton.addEventListener("click", 
+  function () {
+    answers.textContent = "What??";
+    mascot.src = "axolotlDisappointed.png";
+    haveDrinkButton.style.transform = "scale(0)"
+    setTimeout(function () {
+      answers.textContent = "hmmmmm, drink water now Py";
+      mascot.src = "axolotlLove.png";
+    }, 2000);
   });
 
-  noButton.addEventListener("click", function () {
+  noButton.addEventListener("click", 
+  function () {
     answers.textContent = "Aww, why not?🥹🥹🥹 ";
-  
+    mascot.src = "axolotlSad.png";
+    setTimeout(function () {
+      answers.textContent = "Please drink water, Py🥺🥺🥺";
+      mascot.src = "axolotlSad.png";
+    }, 2000);
   });
 
   
 function escaping(event) {
   event.preventDefault();
+  noButton.style.position = "fixed";
+
+    percobaan++;
+
+  const tinyScale = Math.max(0.1, 1 - percobaan * 0.15);
+  noButton.style.transform = "scale(" + tinyScale + ")";
+
+  const largeScale = Math.min(1.6, 1 + percobaan * 0.1);
+  yesButton.style.transform = "scale(" + largeScale + ")";
+
+if (percobaan== 1) {
+  answers.textContent = "why no?🥲"
+  mascot.src = "axolotlWorried.png";
+}
+
+if (percobaan== 2) { 
+  answers.textContent = "🥺🥺🥺"
+}
+
+if (percobaan== 3) {
+  answers.textContent = "..."
+}
+
+if (percobaan== 4) {
+  answers.textContent = "u must drink water Py"
+}
+
+if (percobaan== 5) {
+  answers.textContent = "hmmm, okay -_-"
+  mascot.src = "axolotlDisappointed.png";
+}
+
+if (percobaan== 6) {
+  answers.textContent = "okay, last chance Py"
+}
+
+if (percobaan== 7) {
+  answers.textContent = "would u like to drink water now?"
+}
+
+
+  if (percobaan === 7) {
+    noButton.style.opacity = "0";
+  }
+
+
 
   const maxX = window.innerWidth - noButton.offsetWidth;
   const maxY = window.innerHeight - noButton.offsetHeight;
@@ -204,7 +285,6 @@ function escaping(event) {
   noButton.style.left = x + "px";
   noButton.style.top = y + "px";
 }
-
 noButton.addEventListener("mouseenter", escaping);
 noButton.addEventListener("touchstart", escaping);
 </script>
@@ -226,6 +306,8 @@ noButton.addEventListener("touchstart", escaping);
 
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+
 
 </body>
 </html>
